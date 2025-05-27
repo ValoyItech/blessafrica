@@ -174,6 +174,16 @@
             max-width: 100%;
             max-height: 90vh;
         }
+
+        /* Icon hover, transform, and animation */
+.icon-hover {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.icon-hover:hover {
+  transform: scale(1.2) rotate(5deg);
+  animation: pulse 1s infinite alternate;
+}
+
     </style>
 </head>
 <body class="bg-gray-900 text-white font-sans">
@@ -185,7 +195,7 @@
         </div>
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
@@ -350,173 +360,188 @@
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gray-900">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-col lg:flex-row items-center">
-            <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12" data-aos="fade-right">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8">About <span class="text-[var(--primary-color)]">Us</span></h2>
-                <p class="text-lg mb-6">Bless Africa is a creative photography and media company dedicated to capturing the beauty, personality, and spirit of every moment. We offer a diverse range of services that cater to fashion, weddings, corporate shoots, personal portraits, family memories, and all types of events—including a professionally equipped podcasting venue.</p>
-                <p class="text-lg mb-6">Our team blends artistry with professionalism to deliver high-quality visual content that tells compelling stories. Whether it's a timeless wedding album, a bold fashion editorial, or a memorable family session, we approach every project with care, creativity, and passion.</p>
-                <p class="text-lg mb-8">At Bless Africa, we believe every frame is a chance to showcase culture, identity, and emotion. We’re not just taking pictures—we're creating lasting impressions.</p>
-                <div class="flex flex-wrap gap-4">
-                    <div class="bg-gray-800 px-4 py-2 rounded-full">
-                        <i class="fas fa-users text-[var(--primary-color)] mr-2"></i>
-                        <span>Diverse Clientele</span>
-                    </div>
-                    <div class="bg-gray-800 px-4 py-2 rounded-full">
-                        <i class="fas fa-magic text-[var(--primary-color)] mr-2"></i>
-                        <span>Creative Direction</span>
-                    </div>
-                    <div class="bg-gray-800 px-4 py-2 rounded-full">
-                        <i class="fas fa-microphone text-[var(--primary-color)] mr-2"></i>
-                        <span>Podcasting Venue Available</span>
-                    </div>
-                </div>
-            </div>
-            <div class="lg:w-1/2 relative" data-aos="fade-left">
-                <img src="images/logo.jpg" 
-                     alt="Bless Africa" 
-                     class="w-full rounded-lg shadow-2xl">
-            </div>
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row items-center">
+      <!-- Text content -->
+      <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8" data-aos="fade-up">About <span class="text-[var(--primary-color)]">Us</span></h2>
+        
+        <p class="text-lg mb-6" data-aos="fade-up" data-aos-delay="100">
+          Bless Africa is a creative photography and media company dedicated to capturing the beauty, personality, and spirit of every moment. We offer a diverse range of services that cater to fashion, weddings, corporate shoots, personal portraits, family memories, and all types of events—including a professionally equipped podcasting venue.
+        </p>
+        
+        <p class="text-lg mb-6" data-aos="fade-up" data-aos-delay="200">
+          Our team blends artistry with professionalism to deliver high-quality visual content that tells compelling stories. Whether it's a timeless wedding album, a bold fashion editorial, or a memorable family session, we approach every project with care, creativity, and passion.
+        </p>
+        
+        <p class="text-lg mb-8" data-aos="fade-up" data-aos-delay="300">
+          At Bless Africa, we believe every frame is a chance to showcase culture, identity, and emotion. We’re not just taking pictures—we're creating lasting impressions.
+        </p>
+
+        <!-- Icon features -->
+        <div class="flex flex-wrap gap-4">
+          <div class="bg-gray-800 px-4 py-2 rounded-full" data-aos="fade-right">
+            <i class="fas fa-users text-[var(--primary-color)] mr-2 icon-hover"></i>
+            <span>Diverse Clientele</span>
+          </div>
+          <div class="bg-gray-800 px-4 py-2 rounded-full" data-aos="fade-right" data-aos-delay="100">
+            <i class="fas fa-magic text-[var(--primary-color)] mr-2 icon-hover"></i>
+            <span>Creative Direction</span>
+          </div>
+          <div class="bg-gray-800 px-4 py-2 rounded-full" data-aos="fade-right" data-aos-delay="200">
+            <i class="fas fa-microphone text-[var(--primary-color)] mr-2 icon-hover"></i>
+            <span>Podcasting Venue Available</span>
+          </div>
         </div>
+      </div>
+
+      <!-- Image -->
+      <div class="lg:w-1/2 relative">
+        <img src="images/logo.jpg" alt="Bless Africa" class="w-full rounded-lg shadow-2xl">
+      </div>
     </div>
+  </div>
 </section>
+
 
 
     <!-- Services Section -->
     <section id="services" class="py-20 bg-gray-800">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">My <span class="text-[var(--primary-color)]">Services</span></h2>
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">My <span class="text-[var(--primary-color)]">Services</span></h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Fashion -->
-            <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition" data-aos="fade-up">
-                <div class="text-[var(--primary-color)] text-4xl mb-4">
-                    <i class="fas fa-tshirt"></i>
-                </div>
-                <h3 class="text-2xl font-bold mb-4">Fashion</h3>
-                <p class="text-gray-300 mb-6">Stylish fashion photography for brands, influencers, and individuals who want to stand out with bold and creative visuals.</p>
-            </div>
-
-            <!-- Wedding -->
-            <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition" data-aos="fade-up">
-                <div class="text-[var(--primary-color)] text-4xl mb-4">
-                    <i class="fas fa-ring"></i>
-                </div>
-                <h3 class="text-2xl font-bold mb-4">Wedding</h3>
-                <p class="text-gray-300 mb-6">Beautiful, emotional wedding photography that captures every meaningful moment of your special day.</p>
-            </div>
-
-            <!-- Corporate -->
-            <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition" data-aos="fade-up">
-                <div class="text-[var(--primary-color)] text-4xl mb-4">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <h3 class="text-2xl font-bold mb-4">Corporate</h3>
-                <p class="text-gray-300 mb-6">Professional imagery for corporate events, branding, staff portraits, and company profiles.</p>
-            </div>
-
-            <!-- Personal -->
-            <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition" data-aos="fade-up">
-                <div class="text-[var(--primary-color)] text-4xl mb-4">
-                    <i class="fas fa-user"></i>
-                </div>
-                <h3 class="text-2xl font-bold mb-4">Personal</h3>
-                <p class="text-gray-300 mb-6">Customized personal photo sessions for milestones, lifestyle shoots, or just to celebrate yourself.</p>
-            </div>
-
-            <!-- Family -->
-            <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition" data-aos="fade-up">
-                <div class="text-[var(--primary-color)] text-4xl mb-4">
-                    <i class="fas fa-users"></i>
-                </div>
-                <h3 class="text-2xl font-bold mb-4">Family</h3>
-                <p class="text-gray-300 mb-6">Heartwarming family portraits that capture love, connection, and generations together.</p>
-            </div>
-
-            <!-- Event -->
-            <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition" data-aos="fade-up">
-                <div class="text-[var(--primary-color)] text-4xl mb-4">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h3 class="text-2xl font-bold mb-4">Event</h3>
-                <p class="text-gray-300 mb-6">Coverage for any type of event—from birthdays to galas—with vibrant, storytelling photography.</p>
-            </div>
-
-            <!-- Podcasting Venue -->
-            <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition" data-aos="fade-up">
-                <div class="text-[var(--primary-color)] text-4xl mb-4">
-                    <i class="fas fa-microphone-alt"></i>
-                </div>
-                <h3 class="text-2xl font-bold mb-4">Podcasting Venue</h3>
-                <p class="text-gray-300 mb-6">A fully equipped space for podcast creators with a great setup for recording both audio and video content.</p>
-            </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Fashion -->
+      <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition">
+        <div class="text-[var(--primary-color)] text-4xl mb-4" data-aos="zoom-in">
+          <i class="fas fa-tshirt icon-hover"></i>
         </div>
+        <h3 class="text-2xl font-bold mb-4" data-aos="fade-up">Fashion</h3>
+        <p class="text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="100">Stylish fashion photography for brands, influencers, and individuals who want to stand out with bold and creative visuals.</p>
+      </div>
+
+      <!-- Wedding -->
+      <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition">
+        <div class="text-[var(--primary-color)] text-4xl mb-4" data-aos="zoom-in">
+          <i class="fas fa-ring icon-hover"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4" data-aos="fade-up">Wedding</h3>
+        <p class="text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="100">Beautiful, emotional wedding photography that captures every meaningful moment of your special day.</p>
+      </div>
+
+      <!-- Corporate -->
+      <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition">
+        <div class="text-[var(--primary-color)] text-4xl mb-4" data-aos="zoom-in">
+          <i class="fas fa-briefcase icon-hover"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4" data-aos="fade-up">Corporate</h3>
+        <p class="text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="100">Professional imagery for corporate events, branding, staff portraits, and company profiles.</p>
+      </div>
+
+      <!-- Personal -->
+      <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition">
+        <div class="text-[var(--primary-color)] text-4xl mb-4" data-aos="zoom-in">
+          <i class="fas fa-user icon-hover"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4" data-aos="fade-up">Personal</h3>
+        <p class="text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="100">Customized personal photo sessions for milestones, lifestyle shoots, or just to celebrate yourself.</p>
+      </div>
+
+      <!-- Family -->
+      <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition">
+        <div class="text-[var(--primary-color)] text-4xl mb-4" data-aos="zoom-in">
+          <i class="fas fa-users icon-hover"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4" data-aos="fade-up">Family</h3>
+        <p class="text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="100">Heartwarming family portraits that capture love, connection, and generations together.</p>
+      </div>
+
+      <!-- Event -->
+      <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition">
+        <div class="text-[var(--primary-color)] text-4xl mb-4" data-aos="zoom-in">
+          <i class="fas fa-calendar-alt icon-hover"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4" data-aos="fade-up">Event</h3>
+        <p class="text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="100">Coverage for any type of event—from birthdays to galas—with vibrant, storytelling photography.</p>
+      </div>
+
+      <!-- Podcasting Venue -->
+      <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg transition">
+        <div class="text-[var(--primary-color)] text-4xl mb-4" data-aos="zoom-in">
+          <i class="fas fa-microphone-alt icon-hover"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4" data-aos="fade-up">Podcasting Venue</h3>
+        <p class="text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="100">A fully equipped space for podcast creators with a great setup for recording both audio and video content.</p>
+      </div>
     </div>
+  </div>
 </section>
+
 
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-20 bg-gray-900">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Client <span class="text-[var(--primary-color)]">Testimonials</span></h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card p-8 rounded-lg border border-gray-700" data-aos="fade-up">
-                <div class="flex items-center mb-6">
-                    <img src="images/placeholder.png" alt="Client" class="w-12 h-12 rounded-full mr-4">
-                    <div>
-                        <h4 class="font-bold">Vutomi Nkuna</h4>
-                        <div class="text-[var(--primary-color)]">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="italic">"Bless Africa turned our wedding into timeless memories. The pictures are magical, emotional, and full of life. We'll always be grateful for their artistry and patience!"</p>
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Client <span class="text-[var(--primary-color)]">Testimonials</span></h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card p-8 rounded-lg border border-gray-700">
+        <div class="flex items-center mb-6">
+          <img src="images/placeholder.png" alt="Client" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <h4 class="font-bold" data-aos="fade-right">Vutomi Nkuna</h4>
+            <div class="text-[var(--primary-color)]" data-aos="zoom-in">
+              <i class="fas fa-star icon-hover"></i>
+              <i class="fas fa-star icon-hover"></i>
+              <i class="fas fa-star icon-hover"></i>
+              <i class="fas fa-star icon-hover"></i>
+              <i class="fas fa-star icon-hover"></i>
             </div>
-            
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card p-8 rounded-lg border border-gray-700" data-aos="fade-up">
-                <div class="flex items-center mb-6">
-                    <img src="images/placeholder.png" alt="Client" class="w-12 h-12 rounded-full mr-4">
-                    <div>
-                        <h4 class="font-bold">Hector Baloyi</h4>
-                        <div class="text-[var(--primary-color)]">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="italic">"We booked Bless Africa for our company profile shoot and the results were on point! Clean, professional, and delivered faster than expected. Our branding never looked better."</p>
-            </div>
-            
-            <!-- Testimonial 3 -->
-            <div class="testimonial-card p-8 rounded-lg border border-gray-700" data-aos="fade-up">
-                <div class="flex items-center mb-6">
-                    <img src="images/placeholder.png" alt="Client" class="w-12 h-12 rounded-full mr-4">
-                    <div>
-                        <h4 class="font-bold">Nyeleti Baloyi</h4>
-                        <div class="text-[var(--primary-color)]">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="italic">"Our family shoot was fun and relaxed. Bless Africa made us feel right at home and captured the most beautiful candid moments. Everyone loved the results!"</p>
-            </div>
+          </div>
         </div>
+        <p class="italic" data-aos="fade-up" data-aos-delay="100">"Bless Africa turned our wedding into timeless memories. The pictures are magical, emotional, and full of life. We'll always be grateful for their artistry and patience!"</p>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card p-8 rounded-lg border border-gray-700">
+        <div class="flex items-center mb-6">
+          <img src="images/placeholder.png" alt="Client" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <h4 class="font-bold" data-aos="fade-right">Hector Baloyi</h4>
+            <div class="text-[var(--primary-color)]" data-aos="zoom-in">
+              <i class="fas fa-star icon-hover"></i>
+              <i class="fas fa-star icon-hover"></i>
+              <i class="fas fa-star icon-hover"></i>
+              <i class="fas fa-star icon-hover"></i>
+              <i class="fas fa-star icon-hover"></i>
+            </div>
+          </div>
+        </div>
+        <p class="italic" data-aos="fade-up" data-aos-delay="100">"We booked Bless Africa for our company profile shoot and the results were on point! Clean, professional, and delivered faster than expected. Our branding never looked better."</p>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card p-8 rounded-lg border border-gray-700">
+        <div class="flex items-center mb-6">
+          <img src="images/placeholder.png" alt="Client" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <h4 class="font-bold" data-aos="fade-right">Nyeleti Baloyi</h4>
+            <div class="text-[var(--primary-color)]" data-aos="zoom-in">
+              <i class="fas fa-star icon-hover"></i>
+              <i class="fas fa-star icon-hover"></i>
+              <i class="fas fa-star icon-hover"></i>
+              <i class="fas fa-star icon-hover"></i>
+              <i class="fas fa-star icon-hover"></i>
+            </div>
+          </div>
+        </div>
+        <p class="italic" data-aos="fade-up" data-aos-delay="100">"Our family shoot was fun and relaxed. Bless Africa made us feel right at home and captured the most beautiful candid moments. Everyone loved the results!"</p>
+      </div>
     </div>
+  </div>
 </section>
+
 
 
     <!-- Contact Section -->
@@ -592,7 +617,7 @@
                     </div>
                 </div>
                 
-                <div class="lg:w-1/2" data-aos="fade-left">
+                <div class="lg:w-1/2">
                     <form id="contact-form" class="bg-gray-900 p-8 rounded-lg">
                         <div class="mb-6">
                             <label for="name" class="block mb-2 font-medium">Your Name</label>
