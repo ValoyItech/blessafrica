@@ -1,442 +1,721 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bless Africa Gallery | Professional Photography Showcase</title>
-  <meta name="description" content="Discover the Bless Africa photography gallery, showcasing weddings, portraits, events, and fine art. Capture life's most beautiful moments with creativity and soul.">
-  <meta name="keywords" content="Bless Africa, photography gallery, wedding photography, portrait sessions, event photos, fine art, Giyani photographer, professional photography">
-  <meta name="author" content="Bless Africa Studio">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bless Africa Gallery | Professional Photography Showcase</title>
+    <meta name="description" content="Discover the Bless Africa photography gallery, showcasing weddings, portraits, events, and fine art. Capture life's most beautiful moments with creativity and soul.">
+    <meta name="keywords" content="Bless Africa, photography gallery, wedding photography, portrait sessions, event photos, fine art, Giyani photographer, professional photography">
+    <meta name="author" content="Bless Africa Studio">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Bless Africa Gallery | Professional Photography Showcase">
+    <meta property="og:description" content="Explore the Bless Africa gallery of weddings, portraits, and events. Artistry in every frame.">
+    <meta property="og:image" content="https://www.blessafrica.co.za/images/logo.jpg">
+    <meta property="og:url" content="https://www.blessafrica.co.za/gallery.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bless Africa Gallery | Professional Photography Showcase">
+    <meta name="twitter:description" content="Experience the Bless Africa gallery featuring weddings, portraits, and events. Capture life's most beautiful moments.">
+    <meta name="twitter:image" content="https://www.blessafrica.co.za/images/logo.jpg">
+    <meta name="twitter:site" content="@BlessAfricaStudio">
+    <link rel="icon" href="images/logo.jpg" type="image/jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e63946;
+            --dark-bg: #0d0d0d;
+        }
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+        .gallery-item {
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border-radius: 8px;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
+        }
+        .carousel-container {
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
 
-  <!-- Open Graph (Facebook, LinkedIn) -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Bless Africa Gallery | Professional Photography Showcase">
-  <meta property="og:description" content="Explore the Bless Africa gallery of weddings, portraits, and events. Artistry in every frame.">
-  <meta property="og:image" content="https://www.blessafrica.co.za/images/logo.jpg">
-  <meta property="og:url" content="https://www.blessafrica.co.za/gallery.html">
+        @media (max-width: 1023px) {
+        .carousel-track {
+            justify-content: center;
+        }
+        }
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Bless Africa Gallery | Professional Photography Showcase">
-  <meta name="twitter:description" content="Experience the Bless Africa gallery featuring weddings, portraits, and events. Capture life's most beautiful moments.">
-  <meta name="twitter:image" content="https://www.blessafrica.co.za/images/logo.jpg">
-  <meta name="twitter:site" content="@BlessAfricaStudio">
+        .carousel-slide {
+            min-width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 0.5rem;
+        }
+        .grid-slide {
+            padding: 0 8px;
+            height: 300px;
+            flex-shrink: 0;
+        }
+        .grid-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+        .portrait-slide {
+            padding: 0 8px;
+            height: 400px;
+            flex-shrink: 0;
+        }
+        .portrait-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+        @media (min-width: 1024px) {
+            .grid-slide {
+                flex: 0 0 33.3333%;
+            }
+            .portrait-slide {
+                flex: 0 0 25%;
+            }
+        }
+        @media (max-width: 1023px) {
+            .grid-slide {
+                flex: 0 0 100%;
+            }
+            .portrait-slide {
+                flex: 0 0 100%;
+            }
+        }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100%;
+            background-color: var(--dark-bg);
+            z-index: 1000;
+            padding: 2rem;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        .mobile-menu.active {
+            right: 0;
+        }
+        .mobile-menu-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+        }
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+            gap: 1rem;
+        }
+        .prev-btn, .next-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .prev-btn:hover, .next-btn:hover {
+            background-color: #d32f2f;
+        }
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1rem;
+        }
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #4a4a4a;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .indicator.active {
+            background-color: var(--primary-color);
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        #hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .hero-image.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        .hero-text-container {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+            padding: 0 20px;
+            max-width: 900px;
+        }
+        #hero-text {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+        @media (max-width: 767px) {
+            #hero-text {
+                font-size: 2rem;
+            }
+            .grid-slide {
+                height: 250px;
+            }
+            .portrait-slide {
+                height: 350px;
+            }
+        }
+        .image-placeholder {
+            background: linear-gradient(45deg, #2c2c2c, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+        .gallery-section {
+            padding: 60px 20px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0 3px rgba(230, 57, 70, 0.2);
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #d32f2f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+        }
+        .logo-text {
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            letter-spacing: 1px;
+        }
+        .social-icon {
+            transition: transform 0.3s, color 0.3s;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: var(--primary-color);
+        }
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
 
-  <!-- Favicon -->
-  <link rel="icon" href="images/logo.jpg" type="image/jpeg">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #e63946;
+       /* Mobile optimization for carousels */
+@media (max-width: 1023px) {
+    .carousel-container {
+        overflow: visible; /* Changed to visible for centering */
     }
-    .gallery-item {
-      overflow: hidden;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .gallery-item:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
-    }
-    #carousel, #grid-carousel, #portrait-carousel {
-      display: flex;
-      transition: transform 0.6s ease-in-out;
-    }
-    .carousel-container, .grid-carousel-container, .portrait-carousel-container {
-      overflow: hidden;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto 3rem;
-      position: relative;
-    }
-    .carousel-slide {
-      min-width: 100%;
-      height: auto;
-      max-height: 80vh;
-      object-fit: contain;
-      border-radius: 0.5rem;
-    }
-
-    @media (min-width: 1024px) {
-      .carousel-container {
-        max-width: 1400px;
-      }
-      .carousel-slide {
-        max-height: 90vh;
-      }
-    }
-
-    .grid-slide {
-      padding: 0 8px;
-      height: 300px;
-    }
-    .grid-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 0.5rem;
-    }
-    .portrait-slide {
-      padding: 0 8px;
-      height: 400px;
-    }
-    .portrait-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 0.5rem;
-    }
-    @media (min-width: 1024px) {
-      .grid-slide {
-        flex: 0 0 33.3333%;
-      }
-      .portrait-slide {
-        flex: 0 0 25%;
-      }
-    }
-    @media (max-width: 1023px) {
-      .grid-slide {
-        flex: 0 0 100%;
-      }
-      .portrait-slide {
-        flex: 0 0 100%;
-      }
-    }
-
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 80%;
-      height: 100%;
-      background-color: #0d0d0d;
-      z-index: 1000;
-      padding: 2rem;
-      transition: right 0.3s ease;
-      overflow-y: auto;
-    }
-
-    .mobile-menu.active {
-      right: 0;
-    }
-
-    .mobile-menu-backdrop {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 999;
-      display: none;
-    }
-
-    .carousel-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1rem;
-    }
-
-    .prev-btn, .next-btn {
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-    }
-
-    .prev-btn:hover, .next-btn:hover {
-      background-color: var(--primary-color)/90;
-    }
-
-     /* Mobile-first CSS adjustments */
-    .portrait-slide {
-      height: calc(100vh - 160px); /* Account for navbar and spacing */
-      padding: 0;
-      margin: 1rem 0;
-    }
-
-    .portrait-slide img {
-      object-fit: contain;
-      object-position: center;
-    }
-
-    @media (max-width: 767px) {
-      .carousel-slide {
-        max-height: 60vh;
-      }
-
-      .grid-slide {
-        height: 250px;
-      }
-
-      /* Optimize mobile touch scrolling */
-      .carousel-container, 
-      .grid-carousel-container,
-      .portrait-carousel-container {
-        touch-action: pan-y;
+    
+    .carousel-track {
+        justify-content: flex-start; /* Changed to flex-start */
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
-      }
+        transform: none !important; /* Remove JS transform */
     }
-
-    /* Add aspect ratio for portrait images */
+    
+    .grid-slide, 
     .portrait-slide {
-      aspect-ratio: 3/4;
-      height: auto;
+        scroll-snap-align: center;
+        flex: 0 0 85%; /* 85% width with 7.5% gap on each side */
+        margin: 0 7.5%; /* Center with margins */
+        height: 280px; /* Slightly reduced height for mobile */
     }
-
-    /* Performance optimizations */
-    img {
-      content-visibility: auto;
+    
+    .carousel-controls {
+        display: none; /* Hide arrows on mobile */
     }
+    
+    .carousel-indicators {
+        margin-top: 2rem; /* More spacing */
+    }
+}
 
-  </style>
+/* Adjust heights for smaller screens */
+@media (max-width: 767px) {
+    .grid-slide {
+        height: 220px;
+    }
+    .portrait-slide {
+        height: 300px;
+    }
+}
+
+    </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body class="bg-gray-900 text-white">
 
-  <!-- Fixed Navbar -->
-  <nav class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-90 backdrop-blur-sm">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <!-- Logo -->
-      <a href="index.html" class="flex items-center space-x-2">
-        <img src="images/logo.jpg" alt="Bless Africa Logo" class="h-10 w-10 rounded-full object-cover">
-        <span class="text-xl font-bold text-white"><span class="text-[var(--primary-color)]">BLESS</span>AFRICA</span>
-      </a>
+    <!-- Fixed Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-90 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="images/logo.jpg" alt="Bless Africa Logo" class="h-10 w-10 rounded-full object-cover">
+                <span class="text-xl font-bold text-white logo-text"><span class="text-[var(--primary-color)]">BLESS</span>AFRICA</span>
+            </a>
+            <div class="hidden md:flex space-x-6 text-white">
+                <a href="index.html" class="nav-link hover:text-[var(--primary-color)] transition">Home</a>
+                <a href="#grid-gallery" class="nav-link hover:text-[var(--primary-color)] transition">Gallery</a>
+                <a href="#portrait-gallery" class="nav-link hover:text-[var(--primary-color)] transition">Portraits</a>
+                <a href="#contact" class="nav-link hover:text-[var(--primary-color)] transition">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex space-x-6 text-white">
-        <a href="#hero-carousel" class="hover:text-[var(--primary-color)] transition">Featured</a>
-        <a href="#grid-gallery" class="hover:text-[var(--primary-color)] transition">Gallery</a>
-        <a href="#portrait-gallery" class="hover:text-[var(--primary-color)] transition">Portraits</a>
-        <a href="#contact" class="hover:text-[var(--primary-color)] transition">Contact</a>
-      </div>
+    <!-- Mobile Menu Backdrop -->
+    <div class="mobile-menu-backdrop" id="mobile-menu-backdrop"></div>
 
-      <!-- Mobile Toggle -->
-      <div class="md:hidden">
-        <button id="menu-btn" class="text-white text-2xl focus:outline-none">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
+    <!-- Mobile Slide-in Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="text-right">
+            <button id="mobile-menu-close" class="text-white text-2xl focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mt-8 space-y-6 text-white text-lg pl-4">
+            <li><a href="#hero" class="block py-2 hover:text-[var(--primary-color)] transition">Home</a></li>
+            <li><a href="#featured" class="block py-2 hover:text-[var(--primary-color)] transition">Featured</a></li>
+            <li><a href="#grid-gallery" class="block py-2 hover:text-[var(--primary-color)] transition">Gallery</a></li>
+            <li><a href="#portrait-gallery" class="block py-2 hover:text-[var(--primary-color)] transition">Portraits</a></li>
+            <li><a href="#contact" class="block py-2 hover:text-[var(--primary-color)] transition">Contact</a></li>
+        </ul>
     </div>
-  </nav>
 
-  <!-- Mobile Menu Backdrop -->
-  <div class="mobile-menu-backdrop" id="mobile-menu-backdrop"></div>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-image-container">
+            <img src="images/IX3A0008 copy.jpg" alt="Fashion Photography" class="hero-image active">
+            <img src="images/IX3A0010 copy.jpg" alt="Wedding Photography" class="hero-image">
+            <img src="images/IX3A0026 copy.jpg" alt="Corporate Photography" class="hero-image">
+            <img src="images/IX3A0028 copy.jpg" alt="Personal Photography" class="hero-image">
+        </div>
+        <div class="hero-text-container" data-aos="fade-up" data-aos-duration="1000">
+            <h1 id="hero-text" class="text-4xl md:text-6xl font-bold">Capturing Life's Beautiful Moments</h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto">Professional photography that tells your unique story</p>
+            <div class="mt-8">
+                <a href="#contact" class="btn-primary inline-block px-8 py-3 text-lg">Book a Session</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- Mobile Slide-in Menu -->
-  <div class="mobile-menu" id="mobile-menu">
-    <div class="mobile-menu-close" id="mobile-menu-close">
-      <i class="fas fa-times text-white text-2xl"></i>
-    </div>
-    <ul class="mt-12 space-y-6 text-white text-lg">
-      <li><a href="#hero-carousel">Featured</a></li>
-      <li><a href="#grid-gallery">Gallery</a></li>
-      <li><a href="#portrait-gallery">Portraits</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
+    <!-- Gallery Title Section -->
+    <section class="py-16 text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold text-[var(--primary-color)] mb-4">Our Gallery</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">Explore our collection of stunning photography that captures the essence of every moment. From weddings to portraits, each image tells a unique story.</p>
+        </div>
+    </section>
 
-  <!-- Page Title Section -->
-  <section class="mt-24 text-center py-12">
-    <h1 class="text-4xl font-bold text-[var(--primary-color)]">Gallery</h1>
-    <p class="mt-2 text-gray-300">Explore our moments of creativity and passion</p>
-  </section>
+    
 
-  <!-- Hero Slideshow -->
-  <div class="carousel-container">
-    <div id="carousel">
-      <img src="images/IX3A0008 copy.jpg" class="carousel-slide" alt="Slide 1">
-      <img src="images/IX3A0010 copy.jpg" class="carousel-slide" alt="Slide 2">
-      <img src="images/IX3A0026 copy.jpg" class="carousel-slide" alt="Slide 3">
-      <img src="images/IX3A0032 copy.jpg" class="carousel-slide" alt="Slide 4">
-      <img src="images/IX3A0060 copy.jpg" class="carousel-slide" alt="Slide 5">
-      <img src="images/IX3A0063 copy.jpg" class="carousel-slide" alt="Slide 1">
-      <img src="images/IX3A0067 copy.jpg" class="carousel-slide" alt="Slide 2">
-      <img src="images/IX3A0079 copy.jpg" class="carousel-slide" alt="Slide 3">
-      <img src="images/IX3A0104-Recovered.jpg" class="carousel-slide" alt="Slide 4">
-      <img src="images/IX3A0116 0copy.jpg" class="carousel-slide" alt="Slide 5">
-      <img src="images/IX3A0118 copy.jpg" class="carousel-slide" alt="Slide 1">
-      <img src="images/IX3A0141 copy.jpg" class="carousel-slide" alt="Slide 2">
-      <img src="images/IX3A0147 copy.jpg" class="carousel-slide" alt="Slide 3">
-      <img src="images/IX3A0220 copy.jpg" class="carousel-slide" alt="Slide 4">
-      <img src="images/IX3A0224 copy.jpg" class="carousel-slide" alt="Slide 5">
-    </div>
-    <div class="carousel-controls">
-      <button id="prev-btn" class="prev-btn">Prev</button>
-      <button id="next-btn" class="next-btn">Next</button>
-    </div>
-  </div>
+    <!-- Grid Gallery -->
+    <section id="grid-gallery" class="gallery-section bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold">Gallery Collection</h2>
+            <div class="carousel-container">
+                <div id="grid-carousel" class="carousel-track">
+                    <div class="grid-slide">
+                        <img src="images/show1.jpg" alt="Gallery Image 1">
+                    </div>
+                    <div class="grid-slide">
+                        <img src="images/show2.jpg" alt="Gallery Image 2">
+                    </div>
+                    <div class="grid-slide">
+                        <img src="images/show3.jpg" alt="Gallery Image 3">
+                    </div>
+                    <div class="grid-slide">
+                        <img src="images/show4.jpg" alt="Gallery Image 4">
+                    </div>
+                    <div class="grid-slide">
+                        <img src="images/show5.jpg" alt="Gallery Image 5">
+                    </div>
+                    <div class="grid-slide">
+                        <img src="images/show6.jpg" alt="Gallery Image 6">
+                    </div>
+                    <div class="grid-slide">
+                        <img src="images/baby (1).jpg" alt="Gallery Image 1">
+                    </div>
+                    <div class="grid-slide">
+                        <img src="images/baby (2).jpg" alt="Gallery Image 2">
+                    </div>
+                    <div class="grid-slide">
+                        <img src="images/baby (3).jpg" alt="Gallery Image 3">
+                    </div>
+                    <div class="grid-slide">
+                        <img src="images/baby (4).jpg" alt="Gallery Image 4">
+                    </div>
+                    <div class="grid-slide">
+                        <img src="images/baby (5).jpg" alt="Gallery Image 5">
+                    </div>
+                    <div class="grid-slide">
+                        <img src="images/IX3A0227 copy.jpg" alt="Gallery Image 6">
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="prev-btn" data-carousel="grid-carousel"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-indicators" id="grid-indicators">
+                        <div class="indicator active" data-index="0"></div>
+                        <div class="indicator" data-index="1"></div>
+                        <div class="indicator" data-index="2"></div>
+                        <div class="indicator" data-index="3"></div>
+                        <div class="indicator" data-index="4"></div>
+                        <div class="indicator" data-index="5"></div>
+                    </div>
+                    <button class="next-btn" data-carousel="grid-carousel"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Grid Gallery Slideshow -->
-  <div class="grid-carousel-container">
-    <div id="grid-carousel">
-      <div class="grid-slide"><img src="images/show1.jpg" alt="Gallery Slide 1"></div>
-      <div class="grid-slide"><img src="images/show2.jpg" alt="Gallery Slide 2"></div>
-      <div class="grid-slide"><img src="images/show3.jpg" alt="Gallery Slide 3"></div>
-      <div class="grid-slide"><img src="images/show4.jpg" alt="Gallery Slide 4"></div>
-      <div class="grid-slide"><img src="images/show5.jpg" alt="Gallery Slide 5"></div>
-      <div class="grid-slide"><img src="images/show6.jpg" alt="Gallery Slide 6"></div>
-      <div class="grid-slide"><img src="images/baby (1).jpg" alt="Gallery Slide 2"></div>
-      <div class="grid-slide"><img src="images/baby (2).jpg" alt="Gallery Slide 3"></div>
-      <div class="grid-slide"><img src="images/baby (3).jpg" alt="Gallery Slide 4"></div>
-      <div class="grid-slide"><img src="images/baby (4).jpg" alt="Gallery Slide 5"></div>
-      <div class="grid-slide"><img src="images/baby (5).jpg" alt="Gallery Slide 6"></div>
-    </div>
-  </div>
+    <!-- Portrait Gallery -->
+    <section id="portrait-gallery" class="gallery-section">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold">Portrait Collection</h2>
+            <div class="carousel-container">
+                <div id="portrait-carousel" class="carousel-track">
+                    <div class="portrait-slide">
+                        <img src="images/port1.jpg" alt="Portrait 1">
+                    </div>
+                    <div class="portrait-slide">
+                        <img src="images/port2.jpg" alt="Portrait 2">
+                    </div>
+                    <div class="portrait-slide">
+                        <img src="images/port3.jpg" alt="Portrait 3">
+                    </div>
+                    <div class="portrait-slide">
+                        <img src="images/port4.jpg" alt="Portrait 4">
+                    </div>
+                    <div class="portrait-slide">
+                        <img src="images/potnew (1).jpg" alt="Portrait 5">
+                    </div>
+                    <div class="portrait-slide">
+                        <img src="images/potnew (2).jpg" alt="Portrait 6">
+                    </div>
+                    <div class="portrait-slide">
+                        <img src="images/potnew (3).jpg" alt="Portrait 1">
+                    </div>
+                    <div class="portrait-slide">
+                        <img src="images/potnew (4).jpg" alt="Portrait 2">
+                    </div>
+                    <div class="portrait-slide">
+                        <img src="images/potnew (5).jpg" alt="Portrait 3">
+                    </div>
+                    <div class="portrait-slide">
+                        <img src="images/potnew (6).jpg" alt="Portrait 4">
+                    </div>
+                    <div class="portrait-slide">
+                        <img src="images/potnew (7).jpg" alt="Portrait 5">
+                    </div>
+                    <div class="portrait-slide">
+                        <img src="images/potnew (8).jpg" alt="Portrait 6">
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="prev-btn" data-carousel="portrait-carousel"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-indicators" id="portrait-indicators">
+                        <div class="indicator active" data-index="0"></div>
+                        <div class="indicator" data-index="1"></div>
+                        <div class="indicator" data-index="2"></div>
+                        <div class="indicator" data-index="3"></div>
+                        <div class="indicator" data-index="4"></div>
+                        <div class="indicator" data-index="5"></div>
+                    </div>
+                    <button class="next-btn" data-carousel="portrait-carousel"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Portrait Gallery Slideshow -->
-  <div id="portrait-gallery" class="portrait-carousel-container">
-    <div id="portrait-carousel">
-      <div class="portrait-slide"><img src="images/port1.jpg" alt="Portrait 1"></div>
-      <div class="portrait-slide"><img src="images/port2.jpg" alt="Portrait 2"></div>
-      <div class="portrait-slide"><img src="images/port3.jpg" alt="Portrait 3"></div>
-      <div class="portrait-slide"><img src="images/port4.jpg" alt="Portrait 4"></div>
-      <div class="portrait-slide"><img src="images/potnew (1).jpg" alt="Portrait 1"></div>
-      <div class="portrait-slide"><img src="images/potnew (2).jpg" alt="Portrait 2"></div>
-      <div class="portrait-slide"><img src="images/potnew (3).jpg" alt="Portrait 3"></div>
-      <div class="portrait-slide"><img src="images/potnew (4).jpg" alt="Portrait 4"></div>
-      <div class="portrait-slide"><img src="images/potnew (5).jpg" alt="Portrait 1"></div>
-      <div class="portrait-slide"><img src="images/potnew (6).jpg" alt="Portrait 2"></div>
-      <div class="portrait-slide"><img src="images/potnew (7).jpg" alt="Portrait 3"></div>
-      <div class="portrait-slide"><img src="images/potnew (8).jpg" alt="Portrait 4"></div>
-    </div>
-  </div>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-gray-800">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-10">Get In <span class="text-[var(--primary-color)]">Touch</span></h2>
+            <form class="grid grid-cols-1 gap-6 contact-form">
+                <input type="text" placeholder="Your Name" class="bg-gray-900 p-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]">
+                <input type="email" placeholder="Email Address" class="bg-gray-900 p-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]">
+                <input type="tel" placeholder="Phone Number" class="bg-gray-900 p-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]">
+                <select class="bg-gray-900 p-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]">
+                    <option value="">Select Service</option>
+                    <option value="wedding">Wedding Photography</option>
+                    <option value="portrait">Portrait Session</option>
+                    <option value="event">Event Coverage</option>
+                    <option value="commercial">Commercial Photography</option>
+                </select>
+                <textarea placeholder="Your Message" rows="5" class="bg-gray-900 p-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"></textarea>
+                <button class="btn-primary py-4 text-lg">Send Message</button>
+            </form>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section class="bg-gray-800 py-20 px-6">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-10">Get In <span class="text-[var(--primary-color)]">Touch</span></h2>
-      <form class="grid grid-cols-1 gap-6">
-        <input type="text" placeholder="Your Name" class="bg-gray-900 p-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]">
-        <input type="email" placeholder="Email Address" class="bg-gray-900 p-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]">
-        <textarea placeholder="Your Message" rows="5" class="bg-gray-900 p-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"></textarea>
-        <button class="bg-[var(--primary-color)] text-black font-bold py-3 px-6 rounded-lg hover:bg-[var(--primary-color)]/90 transition">Send Message</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-black py-10 text-center text-gray-500">
-    <p class="text-xl font-bold text-white mb-4">
-      <span class="text-[var(--primary-color)]">BLESS</span>AFRICA
-    </p>
-    <div class="flex justify-center space-x-6 mb-4">
-      <a href="https://www.instagram.com/blessafrica.studio/" class="text-[var(--primary-color)] hover:text-white text-lg sm:text-xl transition">
+    <!-- Footer -->
+    <footer class="bg-black py-12 text-center text-gray-500">
+        <div class="container mx-auto px-4">
+            <p class="text-2xl font-bold text-white mb-6">
+                <span class="text-[var(--primary-color)]">BLESS</span>AFRICA
+            </p>
+            <div class="flex justify-center space-x-8 mb-6">
+                <a href="#" class="text-xl text-gray-400 hover:text-[var(--primary-color)] social-icon">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.facebook.com/Bless.Africa.4109/" class="text-[var(--primary-color)] hover:text-white text-lg sm:text-xl transition">
+                <a href="#" class="text-xl text-gray-400 hover:text-[var(--primary-color)] social-icon">
                     <i class="fab fa-facebook"></i>
                 </a>
-                <a href="https://wa.me/27664211110" class="text-[var(--primary-color)] hover:text-white text-lg sm:text-xl transition">
+                <a href="#" class="text-xl text-gray-400 hover:text-[var(--primary-color)] social-icon">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <a href="https://www.tiktok.com/@blessafrica.studi" class="text-[var(--primary-color)] hover:text-white text-lg sm:text-xl transition">
+                <a href="#" class="text-xl text-gray-400 hover:text-[var(--primary-color)] social-icon">
                     <i class="fab fa-tiktok"></i>
                 </a>
-    </div>
-    <p class="text-sm">&copy; 2025 Bless Africa. All rights reserved.</p>
-  </footer>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-8 text-left">
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Contact Info</h3>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-3 text-[var(--primary-color)]"></i> Giyani, Limpopo</p>
+                    <p class="mb-2"><i class="fas fa-phone mr-3 text-[var(--primary-color)]"></i> +27 66 421 1110</p>
+                    <p class="mb-2"><i class="fas fa-envelope mr-3 text-[var(--primary-color)]"></i> info@blessafrica.co.za</p>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Quick Links</h3>
+                    <p class="mb-2"><a href="#hero" class="hover:text-[var(--primary-color)] transition">Home</a></p>
+                    <p class="mb-2"><a href="#featured" class="hover:text-[var(--primary-color)] transition">Featured</a></p>
+                    <p class="mb-2"><a href="#grid-gallery" class="hover:text-[var(--primary-color)] transition">Gallery</a></p>
+                    <p class="mb-2"><a href="#portrait-gallery" class="hover:text-[var(--primary-color)] transition">Portraits</a></p>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Business Hours</h3>
+                    <p class="mb-2">Monday - Friday: 9AM - 6PM</p>
+                    <p class="mb-2">Saturday: 10AM - 4PM</p>
+                    <p class="mb-2">Sunday: Closed</p>
+                </div>
+            </div>
+            <p class="text-sm pt-6 border-t border-gray-800 max-w-2xl mx-auto">&copy; 2025 Bless Africa. All rights reserved. | Professional Photography Studio</p>
+        </div>
+    </footer>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, once: true });
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
 
-    document.addEventListener("DOMContentLoaded", function () {
-      // Helper for autoplay only when in view
-      const observeAndAnimate = (containerId, intervalMs) => {
-        const container = document.getElementById(containerId);
-        let index = 0;
-        const total = container.children.length;
-        let intervalId = null;
+        // Mobile menu logic
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const backdrop = document.getElementById('mobile-menu-backdrop');
+        const closeBtn = document.getElementById('mobile-menu-close');
 
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              if (!intervalId) {
-                intervalId = setInterval(() => {
-                  let visible = 1;
-                  if (containerId === 'grid-carousel') {
-                    visible = window.innerWidth >= 1024 ? 3 : 1;
-                  } else if (containerId === 'portrait-carousel') {
-                    visible = window.innerWidth >= 1024 ? 4 : 1;
-                  }
-
-                  index = (index + 1) % (total - (visible - 1));
-                  container.style.transform = `translateX(-${index * (100 / visible)}%)`;
-                }, intervalMs);
-              }
-            } else {
-              if (intervalId) {
-                clearInterval(intervalId);
-                intervalId = null;
-              }
-            }
-          });
-        }, { threshold: 0.3 });
-
-        observer.observe(container.parentElement);
-      };
-
-      // Initialize observers for all carousels
-      observeAndAnimate('carousel', 4000);
-      observeAndAnimate('grid-carousel', 4500);
-      observeAndAnimate('portrait-carousel', 4800);
-
-      // Manual carousel navigation
-      const carousel = document.getElementById('carousel');
-      const totalSlides = carousel.children.length;
-      let slideIndex = 0;
-
-      document.getElementById('prev-btn').addEventListener('click', () => {
-        slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
-        carousel.style.transform = `translateX(-${slideIndex * 100}%)`;
-      });
-
-      document.getElementById('next-btn').addEventListener('click', () => {
-        slideIndex = (slideIndex + 1) % totalSlides;
-        carousel.style.transform = `translateX(-${slideIndex * 100}%)`;
-      });
-
-      // Mobile menu toggle
-      const menuBtn = document.getElementById('menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const backdrop = document.getElementById('mobile-menu-backdrop');
-      const closeBtn = document.getElementById('mobile-menu-close');
-
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.add('active');
-        backdrop.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-      });
-
-      closeBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        backdrop.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      });
-
-      backdrop.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        backdrop.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      });
-
-      document.querySelectorAll('.mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.remove('active');
-          backdrop.style.display = 'none';
-          document.body.style.overflow = 'auto';
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            backdrop.style.display = 'block';
+            document.body.style.overflow = 'hidden';
         });
-      });
-    });
-  </script>
 
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            backdrop.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        backdrop.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            backdrop.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                backdrop.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Hero fade slideshow
+        const heroImages = document.querySelectorAll('.hero-image');
+        let heroIndex = 0;
+        setInterval(() => {
+            heroImages.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === heroIndex) img.classList.add('active');
+            });
+            heroIndex = (heroIndex + 1) % heroImages.length;
+        }, 5000);
+
+        // Setup horizontal sliding carousel for grid and portrait galleries
+        function setupTrackCarousel(trackId, slideClass, indicatorId) {
+            const track = document.getElementById(trackId);
+            const slides = track.querySelectorAll(`.${slideClass}`);
+            const indicators = document.getElementById(indicatorId).querySelectorAll('.indicator');
+            const prevBtn = document.querySelector(`.prev-btn[data-carousel="${trackId}"]`);
+            const nextBtn = document.querySelector(`.next-btn[data-carousel="${trackId}"]`);
+            let index = 0;
+
+            function updateCarousel() {
+                const slideWidth = slides[0].offsetWidth + 16; // includes padding
+                const visibleSlides = Math.floor(track.parentElement.offsetWidth / slideWidth);
+                const maxIndex = slides.length - visibleSlides;
+
+                if (index > maxIndex) index = 0;
+                if (index < 0) index = maxIndex;
+
+                track.style.transform = `translateX(-${index * slideWidth}px)`;
+
+                indicators.forEach(ind => ind.classList.remove('active'));
+                if (indicators[index]) indicators[index].classList.add('active');
+            }
+
+            prevBtn.addEventListener('click', () => {
+                index--;
+                updateCarousel();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                index++;
+                updateCarousel();
+            });
+
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', () => {
+                    index = parseInt(indicator.getAttribute('data-index'));
+                    updateCarousel();
+                });
+            });
+
+            window.addEventListener('resize', updateCarousel);
+            updateCarousel();
+
+            setInterval(() => {
+                index++;
+                updateCarousel();
+            }, 6000);
+        }
+
+        setupTrackCarousel('grid-carousel', 'grid-slide', 'grid-indicators');
+        setupTrackCarousel('portrait-carousel', 'portrait-slide', 'portrait-indicators');
+    </script>
 </body>
 </html>
