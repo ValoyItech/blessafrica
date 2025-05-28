@@ -317,6 +317,23 @@
         .mobile-menu.active {
             display: block;
         }
+
+        .portrait-slide {
+    padding: 0 8px;
+    height: 400px;
+    flex-shrink: 0;
+}
+.portrait-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+@media (max-width: 767px) {
+    .portrait-slide {
+        height: 500px; /* Adjust this value as needed */
+    }
+}
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -685,6 +702,10 @@
 
         setupTrackCarousel('grid-carousel', 'grid-slide', 'grid-indicators');
         setupTrackCarousel('portrait-carousel', 'portrait-slide', 'portrait-indicators');
+
+        window.onload = function() {
+    window.scrollTo(0, 0);
+};
     </script>
 </body>
 </html>
