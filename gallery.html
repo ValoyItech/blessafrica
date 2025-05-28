@@ -154,6 +154,48 @@
     .prev-btn:hover, .next-btn:hover {
       background-color: var(--primary-color)/90;
     }
+
+     /* Mobile-first CSS adjustments */
+    .portrait-slide {
+      height: calc(100vh - 160px); /* Account for navbar and spacing */
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .portrait-slide img {
+      object-fit: contain;
+      object-position: center;
+    }
+
+    @media (max-width: 767px) {
+      .carousel-slide {
+        max-height: 60vh;
+      }
+
+      .grid-slide {
+        height: 250px;
+      }
+
+      /* Optimize mobile touch scrolling */
+      .carousel-container, 
+      .grid-carousel-container,
+      .portrait-carousel-container {
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    /* Add aspect ratio for portrait images */
+    .portrait-slide {
+      aspect-ratio: 3/4;
+      height: auto;
+    }
+
+    /* Performance optimizations */
+    img {
+      content-visibility: auto;
+    }
+
   </style>
 </head>
 <body class="bg-gray-900 text-white font-sans">
