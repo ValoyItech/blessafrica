@@ -295,39 +295,56 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, once: true });
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
 
+  document.addEventListener("DOMContentLoaded", function () {
+    // Helper for autoplay only when in view
+    const observeAndAnimate = (containerId, intervalMs) => {
+      const container = document.getElementById(containerId);
+      let index = 0;
+      const total = container.children.length;
+      let intervalId = null;
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (!intervalId) {
+              intervalId = setInterval(() => {
+                let visible = 1;
+                if (containerId === 'grid-carousel') {
+                  visible = window.innerWidth >= 1024 ? 3 : 1;
+                } else if (containerId === 'portrait-carousel') {
+                  visible = window.innerWidth >= 1024 ? 4 : 1;
+                }
+
+                index = (index + 1) % (total - (visible - 1));
+                container.style.transform = `translateX(-${index * (100 / visible)}%)`;
+              }, intervalMs);
+            }
+          } else {
+            if (intervalId) {
+              clearInterval(intervalId);
+              intervalId = null;
+            }
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(container.parentElement);
+    };
+
+    // Initialize observers for all carousels
+    observeAndAnimate('carousel', 4000);
+    observeAndAnimate('grid-carousel', 4500);
+    observeAndAnimate('portrait-carousel', 4800);
+
+    // Manual carousel navigation
     const carousel = document.getElementById('carousel');
-    const gridCarousel = document.getElementById('grid-carousel');
-    const portraitCarousel = document.getElementById('portrait-carousel');
-
-    let slideIndex = 0;
-    let gridIndex = 0;
-    let portraitIndex = 0;
-
     const totalSlides = carousel.children.length;
-    const totalGridSlides = gridCarousel.children.length;
-    const totalPortraitSlides = portraitCarousel.children.length;
+    let slideIndex = 0;
 
-    setInterval(() => {
-      slideIndex = (slideIndex + 1) % totalSlides;
-      carousel.style.transform = `translateX(-${slideIndex * 100}%)`;
-    }, 4000);
-
-    setInterval(() => {
-      const visibleGrid = window.innerWidth >= 1024 ? 3 : 1;
-      gridIndex = (gridIndex + 1) % (totalGridSlides - (visibleGrid - 1));
-      gridCarousel.style.transform = `translateX(-${gridIndex * (100 / visibleGrid)}%)`;
-    }, 4500);
-
-    setInterval(() => {
-      const visiblePortrait = window.innerWidth >= 1024 ? 4 : 1;
-      portraitIndex = (portraitIndex + 1) % (totalPortraitSlides - (visiblePortrait - 1));
-      portraitCarousel.style.transform = `translateX(-${portraitIndex * (100 / visiblePortrait)}%)`;
-    }, 4800);
-
-    // Carousel Navigation
     document.getElementById('prev-btn').addEventListener('click', () => {
       slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
       carousel.style.transform = `translateX(-${slideIndex * 100}%)`;
@@ -338,33 +355,39 @@
       carousel.style.transform = `translateX(-${slideIndex * 100}%)`;
     });
 
-    // Mobile Menu Toggle
-    document.getElementById('menu-btn').addEventListener('click', function () {
-      document.getElementById('mobile-menu').classList.add('active');
-      document.getElementById('mobile-menu-backdrop').style.display = 'block';
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const closeBtn = document.getElementById('mobile-menu-close');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+      backdrop.style.display = 'block';
       document.body.style.overflow = 'hidden';
     });
 
-    document.getElementById('mobile-menu-close').addEventListener('click', function () {
-      document.getElementById('mobile-menu').classList.remove('active');
-      document.getElementById('mobile-menu-backdrop').style.display = 'none';
+    closeBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      backdrop.style.display = 'none';
       document.body.style.overflow = 'auto';
     });
 
-    document.getElementById('mobile-menu-backdrop').addEventListener('click', function () {
-      document.getElementById('mobile-menu').classList.remove('active');
-      this.style.display = 'none';
+    backdrop.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      backdrop.style.display = 'none';
       document.body.style.overflow = 'auto';
     });
 
-    // Close on menu link click
     document.querySelectorAll('.mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
-        document.getElementById('mobile-menu').classList.remove('active');
-        document.getElementById('mobile-menu-backdrop').style.display = 'none';
+        mobileMenu.classList.remove('active');
+        backdrop.style.display = 'none';
         document.body.style.overflow = 'auto';
       });
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
