@@ -30,6 +30,9 @@
 
     <title>BLESSAFRICA | Professional Photography</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
@@ -255,108 +258,103 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-20 bg-gray-800">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Featured <span class="text-[var(--primary-color)]">Work</span></h2>
-            
-            <!-- Portfolio Filter -->
-            <div class="flex justify-center mb-12 flex-wrap">
-                <button class="filter-btn active px-4 py-2 mx-2 mb-2 rounded-full bg-[var(--primary-color)] text-black font-medium" data-filter="all">All</button>
-                <button class="filter-btn px-4 py-2 mx-2 mb-2 rounded-full bg-gray-700 hover:bg-[var(--primary-color)] hover:text-black transition font-medium" data-filter="wedding">Wedding</button>
-                <a href="gallery.html">
-  <button class="filter-btn px-4 py-2 mx-2 mb-2 rounded-full bg-gray-700 hover:bg-[var(--primary-color)] hover:text-black transition font-medium">
-    Portrait
-  </button>
-</a>
-                <button class="filter-btn px-4 py-2 mx-2 mb-2 rounded-full bg-gray-700 hover:bg-[var(--primary-color)] hover:text-black transition font-medium" data-filter="event">Event</button>
-                <button class="filter-btn px-4 py-2 mx-2 mb-2 rounded-full bg-gray-700 hover:bg-[var(--primary-color)] hover:text-black transition font-medium" data-filter="commercial">Commercial</button>
-            </div>
-            
-            <!-- Portfolio Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Wedding -->
-                <div class="gallery-item wedding" data-category="wedding">
-                    <div class="relative overflow-hidden rounded-lg h-64">
-                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
-                             alt="Wedding photography" 
-                             class="w-full h-full object-cover cursor-pointer"
-                             onclick="openLightbox(this)">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
-                            <span class="text-white text-xl font-bold">Wedding Photography</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Portrait -->
-                <div class="gallery-item portrait" data-category="portrait">
-                    <div class="relative overflow-hidden rounded-lg h-64">
-                        <img src="images/show1.jpg" 
-                             alt="Portrait photography" 
-                             class="w-full h-full object-cover cursor-pointer"
-                             onclick="openLightbox(this)">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
-                            <span class="text-white text-xl font-bold">Portrait Photography</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Event -->
-                <div class="gallery-item event" data-category="event">
-                    <div class="relative overflow-hidden rounded-lg h-64">
-                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
-                             alt="Event photography" 
-                             class="w-full h-full object-cover cursor-pointer"
-                             onclick="openLightbox(this)">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
-                            <span class="text-white text-xl font-bold">Event Photography</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Commercial -->
-                <div class="gallery-item commercial" data-category="commercial">
-                    <div class="relative overflow-hidden rounded-lg h-64">
-                        <img src="images/show4.jpg" 
-                             alt="Commercial photography" 
-                             class="w-full h-full object-cover cursor-pointer"
-                             onclick="openLightbox(this)">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
-                            <span class="text-white text-xl font-bold">Commercial Photography</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Wedding -->
-                <div class="gallery-item wedding" data-category="wedding">
-                    <div class="relative overflow-hidden rounded-lg h-64">
-                        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
-                             alt="Wedding photography" 
-                             class="w-full h-full object-cover cursor-pointer"
-                             onclick="openLightbox(this)">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
-                            <span class="text-white text-xl font-bold">Wedding Photography</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Portrait -->
-                <div class="gallery-item portrait" data-category="portrait">
-                    <div class="relative overflow-hidden rounded-lg h-64">
-                        <img src="images/show7.jpg" 
-                             alt="Portrait photography" 
-                             class="w-full h-full object-cover cursor-pointer"
-                             onclick="openLightbox(this)">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
-                            <span class="text-white text-xl font-bold">Portrait Photography</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="gallery.html" class="inline-block border-2 border-white hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] font-bold py-3 px-8 rounded-full transition">View Full Portfolio</a>
-            </div>
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
+      Featured <span class="text-[var(--primary-color)]">Work</span>
+    </h2>
+
+    <!-- Portfolio Filter -->
+    <div class="flex justify-center mb-12 flex-wrap">
+      <button class="filter-btn active px-4 py-2 mx-2 mb-2 rounded-full bg-[var(--primary-color)] text-black font-medium" data-filter="all">All</button>
+      <button class="filter-btn px-4 py-2 mx-2 mb-2 rounded-full bg-gray-700 hover:bg-[var(--primary-color)] hover:text-black transition font-medium" data-filter="wedding">Wedding</button>
+      <button class="filter-btn px-4 py-2 mx-2 mb-2 rounded-full bg-gray-700 hover:bg-[var(--primary-color)] hover:text-black transition font-medium" data-filter="portrait">Portrait</button>
+      <button class="filter-btn px-4 py-2 mx-2 mb-2 rounded-full bg-gray-700 hover:bg-[var(--primary-color)] hover:text-black transition font-medium" data-filter="event">Event</button>
+      <button class="filter-btn px-4 py-2 mx-2 mb-2 rounded-full bg-gray-700 hover:bg-[var(--primary-color)] hover:text-black transition font-medium" data-filter="commercial">Commercial</button>
+      <button class="filter-btn px-4 py-2 mx-2 mb-2 rounded-full bg-gray-700 hover:bg-[var(--primary-color)] hover:text-black transition font-medium" data-filter="fashion">Fashion</button>
+      <button class="filter-btn px-4 py-2 mx-2 mb-2 rounded-full bg-gray-700 hover:bg-[var(--primary-color)] hover:text-black transition font-medium" data-filter="family">Family</button>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Wedding -->
+      <div class="gallery-item wedding" data-category="wedding">
+        <div class="swiper-container h-64 rounded-lg overflow-hidden">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/baby (1).jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/baby (2).jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/baby (3).jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/baby (4).jpg" class="w-full h-full object-cover" /></div>
+          </div>
         </div>
-    </section>
+      </div>
+
+      <!-- Portrait -->
+      <div class="gallery-item portrait" data-category="portrait">
+        <div class="swiper-container h-64 rounded-lg overflow-hidden">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/home1.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/home2.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/home3.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/home4.jpg" class="w-full h-full object-cover" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event -->
+      <div class="gallery-item event" data-category="event">
+        <div class="swiper-container h-64 rounded-lg overflow-hidden">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/show1.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/show2.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/show3.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/show4.jpg" class="w-full h-full object-cover" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Commercial -->
+      <div class="gallery-item commercial" data-category="commercial">
+        <div class="swiper-container h-64 rounded-lg overflow-hidden">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/new1.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/new2.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/new3.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/new4.jpg" class="w-full h-full object-cover" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fashion -->
+      <div class="gallery-item fashion" data-category="fashion">
+        <div class="swiper-container h-64 rounded-lg overflow-hidden">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/IX3A0008 copy.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/IX3A0010 copy.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/IX3A0026 copy.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/IX3A0028 copy.jpg" class="w-full h-full object-cover" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Family -->
+      <div class="gallery-item family" data-category="family">
+        <div class="swiper-container h-64 rounded-lg overflow-hidden">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/pod1.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/pod2.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/pod3.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/pod4.jpg" class="w-full h-full object-cover" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="gallery.html" class="inline-block border-2 border-white hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] font-bold py-3 px-8 rounded-full transition">View Full Portfolio</a>
+    </div>
+  </div>
+</section>
+
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gray-900">
@@ -766,6 +764,18 @@
             duration: 1000,
             once: true
         });
+
+        document.querySelectorAll('.swiper-container').forEach(swiperEl => {
+    new Swiper(swiperEl, {
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      effect: 'fade',
+    });
+  });
+
     </script>
 </body>
 </html>
