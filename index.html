@@ -187,6 +187,22 @@
   animation: pulse 1s infinite alternate;
 }
 
+
+.swiper-img {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  transition: transform 0.3s ease;
+}
+.swiper-slide {
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.swiper-container {
+  contain: layout style paint;
+}
+
     </style>
 </head>
 <body class="bg-gray-900 text-white font-sans">
@@ -256,8 +272,8 @@
 </section>
 
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 bg-gray-800">
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-20 bg-gray-800">
   <div class="container mx-auto px-6">
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
       Featured <span class="text-[var(--primary-color)]">Work</span>
@@ -276,84 +292,88 @@
 
     <!-- Portfolio Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
       <!-- Wedding -->
-      <div class="gallery-item wedding" data-category="wedding">
+      <div class="gallery-item wedding" data-category="wedding" data-aos="fade-up">
         <div class="swiper-container h-64 rounded-lg overflow-hidden">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/baby (1).jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/baby (2).jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/baby (3).jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/baby (4).jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/baby (1).jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/baby (2).jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/baby (3).jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/baby (4).jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
           </div>
         </div>
       </div>
 
       <!-- Portrait -->
-      <div class="gallery-item portrait" data-category="portrait">
+      <div class="gallery-item portrait" data-category="portrait" data-aos="fade-up">
         <div class="swiper-container h-64 rounded-lg overflow-hidden">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/home1.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/home2.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/home3.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/home4.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/home1.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/home2.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/home3.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/home4.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
           </div>
         </div>
       </div>
 
       <!-- Event -->
-      <div class="gallery-item event" data-category="event">
+      <div class="gallery-item event" data-category="event" data-aos="fade-up">
         <div class="swiper-container h-64 rounded-lg overflow-hidden">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/show1.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/show2.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/show3.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/show4.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/show1.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/show2.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/show3.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/show4.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
           </div>
         </div>
       </div>
 
       <!-- Commercial -->
-      <div class="gallery-item commercial" data-category="commercial">
+      <div class="gallery-item commercial" data-category="commercial" data-aos="fade-up">
         <div class="swiper-container h-64 rounded-lg overflow-hidden">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/new1.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/new2.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/new3.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/new4.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/new1.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/new2.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/new3.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/new4.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
           </div>
         </div>
       </div>
 
       <!-- Fashion -->
-      <div class="gallery-item fashion" data-category="fashion">
+      <div class="gallery-item fashion" data-category="fashion" data-aos="fade-up">
         <div class="swiper-container h-64 rounded-lg overflow-hidden">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/IX3A0008 copy.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/IX3A0010 copy.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/IX3A0026 copy.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/IX3A0028 copy.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/IX3A0008 copy.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/IX3A0010 copy.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/IX3A0026 copy.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/IX3A0028 copy.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
           </div>
         </div>
       </div>
 
       <!-- Family -->
-      <div class="gallery-item family" data-category="family">
+      <div class="gallery-item family" data-category="family" data-aos="fade-up">
         <div class="swiper-container h-64 rounded-lg overflow-hidden">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/pod1.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/pod2.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/pod3.jpg" class="w-full h-full object-cover" /></div>
-            <div class="swiper-slide"><img src="images/pod4.jpg" class="w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/pod1.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/pod2.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/pod3.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
+            <div class="swiper-slide"><img src="images/pod4.jpg" loading="lazy" class="swiper-img w-full h-full object-cover" /></div>
           </div>
         </div>
       </div>
+
     </div>
 
+    <!-- View All -->
     <div class="text-center mt-12">
       <a href="gallery.html" class="inline-block border-2 border-white hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] font-bold py-3 px-8 rounded-full transition">View Full Portfolio</a>
     </div>
   </div>
 </section>
+
 
 
     <!-- About Section -->
@@ -765,16 +785,25 @@
             once: true
         });
 
-        document.querySelectorAll('.swiper-container').forEach(swiperEl => {
+
+   document.querySelectorAll('.swiper-container').forEach(swiperEl => {
     new Swiper(swiperEl, {
-      loop: true,
       autoplay: {
-        delay: 2500,
+        delay: 3000,
         disableOnInteraction: false,
       },
-      effect: 'fade',
+      rewind: true, // safer than loop
+      speed: 600,
+      effect: 'slide', // fade + loop is unstable
+      grabCursor: true,
+      slidesPerView: 1,
+      spaceBetween: 0,
+      observer: true,
+      resizeObserver: true,
     });
   });
+
+  window.addEventListener('scroll', () => {}, { passive: true });
 
     </script>
 </body>
