@@ -812,15 +812,16 @@
     </script>
 
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  emailjs.init("ayHogKIA_vDPIN4IN"); // <-- REQUIRED
 
-    <script>
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
     emailjs.sendForm('service_3w3oylg', 'template_uwkgb7e', this)
       .then(function() {
         alert('Message sent successfully!');
-        document.getElementById('contact-form').reset();
+        this.reset();
       }, function(error) {
         alert('Failed to send message. Please try again later.');
         console.error('EmailJS error:', error);
