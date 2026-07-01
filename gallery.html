@@ -735,15 +735,9 @@
     </script>
 
     <script>
-  // Handle form submission via WhatsApp
-  document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const service = document.getElementById('service').value;
-    const message = document.getElementById('message').value.trim();
+  (function() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
 
     const serviceLabels = {
       'wedding': 'Wedding Photography',
@@ -754,18 +748,41 @@
       'workshop': 'Photography Workshop'
     };
 
-    let whatsappText = 'Hello Bless Africa Studio,%0A%0A';
-    whatsappText += 'I would like to inquire about your photography services.%0A%0A';
-    whatsappText += '*Name:* ' + encodeURIComponent(name) + '%0A';
-    if (email) whatsappText += '*Email:* ' + encodeURIComponent(email) + '%0A';
-    if (phone) whatsappText += '*Phone:* ' + encodeURIComponent(phone) + '%0A';
-    if (service) whatsappText += '*Service Interested In:* ' + encodeURIComponent(serviceLabels[service] || service) + '%0A';
-    if (message) whatsappText += '%0A*Message:*%0A' + encodeURIComponent(message) + '%0A';
-    whatsappText += '%0AThank you!';
+    function buildWhatsAppUrl() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value.trim();
 
-    const whatsappUrl = 'https://wa.me/27664211110?text=' + whatsappText;
-    window.open(whatsappUrl, '_blank');
-  });
+      let text = 'Hello Bless Africa Studio,\n\n';
+      text += 'I would like to inquire about your photography services.\n\n';
+      text += '*Name:* ' + name + '\n';
+      if (email) text += '*Email:* ' + email + '\n';
+      if (phone) text += '*Phone:* ' + phone + '\n';
+      if (service) text += '*Service Interested In:* ' + (serviceLabels[service] || service) + '\n';
+      if (message) text += '\n*Message:*\n' + message + '\n';
+      text += '\nThank you!';
+
+      return 'https://wa.me/27664211110?text=' + encodeURIComponent(text);
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const name = document.getElementById('name').value.trim();
+      if (!name) {
+        alert('Please enter your name.');
+        document.getElementById('name').focus();
+        return false;
+      }
+
+      const url = buildWhatsAppUrl();
+      window.location.href = url;
+      return false;
+    });
+  })();
 </script>
 
 </body>
