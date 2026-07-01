@@ -335,6 +335,7 @@
     }
 }
     </style>
+<base target="_blank">
 </head>
 <body class="bg-gray-900 text-white">
     <!-- Fixed Navbar -->
@@ -568,7 +569,7 @@
   </div>
 
   <button type="submit" class="w-full bg-[var(--primary-color)] hover:bg-[var(--primary-color)]/90 text-black font-bold py-3 px-6 rounded-lg transition">
-    Send Message
+    <i class="fab fa-whatsapp mr-2"></i> Send via WhatsApp
   </button>
 </form>
 
@@ -733,23 +734,37 @@
 };
     </script>
 
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  // Initialize EmailJS with your public key
-  emailjs.init("ayHogKIA_vDPIN4IN");
-
-  // Handle form submission
+    <script>
+  // Handle form submission via WhatsApp
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    emailjs.sendForm('service_3w3oylg', 'template_uwkgb7e', this)
-      .then(function() {
-        alert('Message sent successfully!');
-        document.getElementById('contact-form').reset();
-      }, function(error) {
-        alert('Failed to send message. Please try again later.');
-        console.error('EmailJS error:', error);
-      });
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value.trim();
+
+    const serviceLabels = {
+      'wedding': 'Wedding Photography',
+      'portrait': 'Portrait Session',
+      'event': 'Event Photography',
+      'commercial': 'Commercial Photography',
+      'fine-art': 'Fine Art Prints',
+      'workshop': 'Photography Workshop'
+    };
+
+    let whatsappText = 'Hello Bless Africa Studio,%0A%0A';
+    whatsappText += 'I would like to inquire about your photography services.%0A%0A';
+    whatsappText += '*Name:* ' + encodeURIComponent(name) + '%0A';
+    if (email) whatsappText += '*Email:* ' + encodeURIComponent(email) + '%0A';
+    if (phone) whatsappText += '*Phone:* ' + encodeURIComponent(phone) + '%0A';
+    if (service) whatsappText += '*Service Interested In:* ' + encodeURIComponent(serviceLabels[service] || service) + '%0A';
+    if (message) whatsappText += '%0A*Message:*%0A' + encodeURIComponent(message) + '%0A';
+    whatsappText += '%0AThank you!';
+
+    const whatsappUrl = 'https://wa.me/27664211110?text=' + whatsappText;
+    window.open(whatsappUrl, '_blank');
   });
 </script>
 
